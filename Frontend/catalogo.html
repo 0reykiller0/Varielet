@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Catálogo | Varielet</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+
+    <header class="header">
+
+        <div class="logo">
+            <span class="logo-icon">V</span>
+
+            <div class="logo-text">
+                <strong>Varielet</strong>
+                <span>Gift Shop</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catálogo</a>
+           <a href="sobre-nosotros.html">
+    Sobre nosotros
+</a>
+            
+            <a href="#" class="nav-button">
+                Cotizar regalo
+            </a>
+        </nav>
+
+    </header>
+
+
+    <!-- ==================== CATÁLOGO ==================== -->
+
+    <main class="catalog-page">
+
+        <!-- Encabezado -->
+
+        <section class="catalog-header">
+
+            <p class="section-label">
+                CATÁLOGO VARIELET
+            </p>
+
+            <h1>
+                Un detalle para cada historia
+            </h1>
+
+            <p>
+                Explora nuestra selección y descubre piezas listas
+                para personalizar a tu manera.
+            </p>
+
+        </section>
+
+
+        <!-- ==================== BUSCADOR ==================== -->
+
+        <section class="catalog-tools">
+
+            <div class="search-box">
+
+                <input
+    type="text"
+    id="searchInput"
+    placeholder="Buscar productos...">
+       
+    <button type="button" id="searchButton">
+    🔍
+        </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== FILTROS ==================== -->
+
+        <section class="catalog-filters">
+
+            <div class="filter-group">
+
+                <span class="filter-title">
+                    Categorías
+                </span>
+
+                <button class="filter-button active">
+                    Todos los productos
+                </button>
+
+                <button class="filter-button">
+                    Tazas y vasos
+                </button>
+
+                <button class="filter-button">
+                    Termos
+                </button>
+
+                <button class="filter-button">
+                    Libretas
+                </button>
+
+                <button class="filter-button">
+                    Camisetas
+                </button>
+
+                <button class="filter-button">
+                    Llaveros
+                </button>
+
+                <button class="filter-button">
+                    Grabados en madera
+                </button>
+
+                <button class="filter-button">
+                    Eventos
+                </button>
+
+            </div>
+
+
+            <div class="filter-group">
+
+                <span class="filter-title">
+                    Ocasión
+                </span>
+
+                <button class="filter-button">
+                    Cumpleaños
+                </button>
+
+                <button class="filter-button">
+                    Bodas
+                </button>
+
+                <button class="filter-button">
+                    Graduaciones
+                </button>
+
+                <button class="filter-button">
+                    Empresas
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================== RESULTADOS ==================== -->
+
+        <section class="catalog-results">
+
+            <div class="catalog-results-header">
+
+                <span>
+                    Mostrando 9 productos
+                </span>
+
+            </div>
+
+
+            <div class="catalog-product-grid">
+
+
+                <!-- PRODUCTO 1 -->
+
+                <article class="product-card catalog-product"
+                            data-categoria="Tazas y vasos"
+                            data-ocasion="Cumpleaños">
+
+                    <div class="product-image">
+
+                        <img
+                            src="img/taza-momentos.jpg"
+                            alt="Taza Momentos personalizada"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Tazas
+                        </span>
+
+                        <h3 class="product-name">
+                            Taza Momentos
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                Desde RD$650
+                            </span>
+
+                           <a href="producto.html?id=taza-momentos" class="product-view">
+    Ver producto
+</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCTO 2 -->
+
+                <article class="product-card catalog-product"
+                            data-categoria="Tazas y vasos"
+                            data-ocasion="Cumpleaños">
+
+                    <div class="product-image">
+
+                        <img
+                            src="img/vaso-brilla.jpg"
+                            alt="Vaso Brilla personalizado"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Vasos
+                        </span>
+
+                        <h3 class="product-name">
+                            Vaso Brilla
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                Desde RD$850
+                            </span>
+
+                           <a href="producto.html?id=vaso-brilla" class="product-view">
+    Ver producto
+</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCTO 3 -->
+
+                <article class="product-card catalog-product"
+                                data-categoria="Termos"
+                                data-ocasion="Empresas">
+
+                    <div class="product-image">
+
+                        <img
+                            src="img/termo-aura.jpg"
+                            alt="Termo Aura personalizado"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Termos
+                        </span>
+
+                        <h3 class="product-name">
+                            Termo Aura
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                Desde RD$1,250
+                            </span>
+
+                           <a href="producto.html?id=termo-aura" class="product-view">
+    Ver producto
+</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCTO 4 -->
+
+                <article class="product-card catalog-product"
+                                 data-categoria="Libretas"
+                                 data-ocasion="Graduaciones">
+
+                    <div class="product-image">
+
+                        <img
+                            src="img/libreta-tus-ideas.jpg"
+                            alt="Libreta Tus Ideas personalizada"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Libretas
+                        </span>
+
+                        <h3 class="product-name">
+                            Libreta Tus Ideas
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                Desde RD$780
+                            </span>
+
+                           <a href="producto.html?id=libreta-tus-ideas" class="product-view">
+    Ver producto
+</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCTO 5 -->
+
+                <article class="product-card catalog-product"
+    data-categoria="Camisetas"
+    data-ocasion="Empresas">
+
+                    <div class="product-image">
+
+                        <img
+                            src="img/camiseta-equipo.jpg"
+                            alt="Camiseta Equipo personalizada"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Camisetas
+                        </span>
+
+                        <h3 class="product-name">
+                            Camiseta Equipo
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                Desde RD$950
+                            </span>
+
+                            <a href="producto.html?id=camiseta-equipo" class="product-view">
+    Ver producto
+</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCTO 6 -->
+
+               <article class="product-card catalog-product"
+    data-categoria="Llaveros"
+    data-ocasion="Cumpleaños">
+
+                    <div class="product-image">
+
+                        <img
+                            src="img/llavero-inicial.jpg"
+                            alt="Llavero Inicial personalizado"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Llaveros
+                        </span>
+
+                        <h3 class="product-name">
+                            Llavero Inicial
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                Desde RD$350
+                            </span>
+
+                           <a href="producto.html?id=llavero-inicial" class="product-view">
+    Ver producto
+</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCTO 7 -->
+
+               <article class="product-card catalog-product"
+    data-categoria="Grabados en madera"
+    data-ocasion="Bodas">
+
+                    <div class="product-image">
+
+                        <img
+                            src="img/recuerdo-madera.jpg"
+                            alt="Recuerdo en Madera grabado"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Grabados
+                        </span>
+
+                        <h3 class="product-name">
+                            Recuerdo en Madera
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                Desde RD$1,450
+                            </span>
+
+                          <a href="producto.html?id=recuerdo-madera" class="product-view">
+    Ver producto
+</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCTO 8 -->
+
+               <article class="product-card catalog-product"
+    data-categoria="Eventos"
+    data-ocasion="Cumpleaños">
+
+                    <div class="product-image">
+
+                        <img
+                            src="img/caja-celebra.jpg"
+                            alt="Caja Celebra personalizada"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Regalos
+                        </span>
+
+                        <h3 class="product-name">
+                            Caja Celebra
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                Desde RD$1,850
+                            </span>
+
+                            <a href="producto.html?id=caja-celebra" class="product-view">
+    Ver producto
+</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PRODUCTO 9 -->
+
+               <article class="product-card catalog-product"
+    data-categoria="Eventos"
+    data-ocasion="Bodas">
+
+                    <div class="product-image">
+
+                        <img
+                            src="img/kit-nuestra-boda.jpg"
+                            alt="Kit Nuestra Boda"
+                        >
+
+                    </div>
+
+                    <div class="product-info">
+
+                        <span class="product-category">
+                            Eventos
+                        </span>
+
+                        <h3 class="product-name">
+                            Kit Nuestra Boda
+                        </h3>
+
+                        <div class="product-bottom">
+
+                            <span class="product-price">
+                                Cotizar
+                            </span>
+
+                           <a href="producto.html?id=kit-nuestra-boda" class="product-view">
+    Ver producto
+</a>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ==================== FOOTER ==================== -->
+
+      <footer class="footer">
+
+        <div class="footer-brand">
+
+            <h3>
+                Varielet
+            </h3>
+
+            <p>
+                Regalos personalizados que convierten tus momentos
+                especiales en recuerdos inolvidables.
+            </p>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Explora</h4>
+
+            <a href="catalogo.html">Catálogo</a>
+            <a href="#">Ocasiones</a>
+            <a href="#">Empresas</a>
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Ayuda</h4>
+
+            <a href="#">Cómo cotizar</a>
+            <a href="#">Preguntas frecuentes</a>
+          
+
+        </div>
+
+
+        <div class="footer-column">
+
+            <h4>Síguenos</h4>
+
+            <a href="https://instagram.com/varielet?igshid=YmMyMTA2M2Y=">Instagram</a>
+            <a href="http://wa.link/a70gt8">WhatsApp Business</a>
+            <span>Santo Domingo, RD</span>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 Varielet Gift Shop ·
+                Hecho con cariño en República Dominicana.
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
