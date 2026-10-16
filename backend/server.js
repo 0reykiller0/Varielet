@@ -68,7 +68,125 @@ app.get('/api/productos', (req, res) => {
     });
 });
 
+// =====================================================
+// REGISTRAR SOLICITUD DE COTIZACIÓN
+// =====================================================
+
+app.use(express.json());
+
+app.post('/api/solicitudes', (req, res) => {
+
+    const {
+        nombre_cliente,
+        correo,
+        telefono,
+        producto,
+        cantidad,
+        fecha_evento,
+        personalizacion,
+        mensaje
+    } = req.body;
+
+    // Validaciones básicas
+    if (!nombre_cliente || !telefono || !producto || !cantidad || !personalizacion) {
+        return res.status(400).json({
+            error: 'Faltan datos obligatorios'
+        });
+    }
+
+    const consulta = `
+        INSERT INTO solicitudes
+        (
+            nombre_cliente,
+            correo,
+            telefono,
+            producto,
+            cantidad,
+            fecha_evento,
+            personalizacion,
+            mensaje
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    const valores = [
+        nombre_cliente,
+        correo || null,
+        telefono,
+        producto,
+        cantidad,
+        fecha_evento || null,
+        personalizacion,
+        mensaje || null
+    ];
+
+    conexion.query(consulta, valores, (error, resultado) => {
+
+        if (error) {
+
+            console.error(
+                'Error al guardar la solicitud:',
+                error.message
+            );
+
+            return res.status(500).json({
+                error: 'No se pudo guardar la solicitud'
+            });
+        }
+
+        console.log(
+            'Solicitud registrada. ID:',
+            resultado.insertId
+        );
+
+        res.status(201).json({
+            mensaje: 'Solicitud registrada correctamente',
+            id_solicitud: resultado.insertId
+        });
+    });
+});
 
 app.listen(PORT, () => {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`);
+});
+
+
+// =====================================================
+// CONSULTAR SOLICITUDES
+// =====================================================
+
+app.get('/api/solicitudes', (req, res) => {
+
+    const consulta = `
+        SELECT
+            id_solicitud,
+            nombre_cliente,
+            correo,
+            telefono,
+            producto,
+            cantidad,
+            fecha_evento,
+            personalizacion,
+            mensaje,
+            estado,
+            fecha_solicitud
+        FROM solicitudes
+        ORDER BY id_solicitud DESC
+    `;
+
+    conexion.query(consulta, (error, resultados) => {
+
+        if (error) {
+            console.error(
+                'Error al consultar solicitudes:',
+                error.message
+            );
+
+            return res.status(500).json({
+                error: 'No se pudieron consultar las solicitudes'
+            });
+        }
+
+        res.json(resultados);
+    });
 });

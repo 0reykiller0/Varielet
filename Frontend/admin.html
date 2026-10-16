@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración | Varielet</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 30px;
+        }
+
+        .admin-header {
+            margin-bottom: 35px;
+        }
+
+        .admin-header h1 {
+            margin-bottom: 10px;
+        }
+
+        .admin-header p {
+            color: #6f625e;
+        }
+
+        .admin-table-container {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(85, 58, 50, 0.08);
+            overflow-x: auto;
+        }
+
+        .admin-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        .admin-table th {
+            text-align: left;
+            padding: 15px;
+            background: #fff0eb;
+            color: #553a32;
+            font-size: 14px;
+        }
+
+        .admin-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            color: #342622;
+            font-size: 14px;
+        }
+
+        .estado {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: #f7d7cc;
+            color: #553a32;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .sin-solicitudes {
+            text-align: center;
+            padding: 40px;
+            color: #777;
+        }
+
+        .volver {
+            display: inline-block;
+            margin-top: 25px;
+            color: #553a32;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+
+        <div class="logo">
+            <span class="logo-icon">V</span>
+
+            <div class="logo-text">
+                <strong>Varielet</strong>
+                <span>Gift Shop</span>
+            </div>
+        </div>
+
+        <nav class="nav">
+            <a href="index.html">Inicio</a>
+            <a href="catalogo.html">Catálogo</a>
+           <a href="sobre-nosotros.html">
+    Sobre nosotros
+</a>
+           
+            <a href="cotizar.html" class="nav-button">
+                Cotizar regalo
+            </a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <section class="admin-container">
+
+            <div class="admin-header">
+
+                <span class="section-label">
+                    ADMINISTRACIÓN
+                </span>
+
+                <h1>
+                    Solicitudes de cotización
+                </h1>
+
+                <p>
+                    Consulta las solicitudes recibidas desde el formulario de cotización.
+                </p>
+
+            </div>
+
+
+            <div class="admin-table-container">
+
+                <table class="admin-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>ID</th>
+                            <th>Cliente</th>
+                            <th>Teléfono</th>
+                            <th>Producto</th>
+                            <th>Cantidad</th>
+                            <th>Fecha evento</th>
+                            <th>Personalización</th>
+                            <th>Estado</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="solicitudesTable">
+
+                        <tr>
+                            <td colspan="8" class="sin-solicitudes">
+                                Cargando solicitudes...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <a href="index.html" class="volver">
+                ← Volver al inicio
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        async function cargarSolicitudes() {
+
+            const tabla = document.querySelector("#solicitudesTable");
+
+            try {
+
+                const respuesta = await fetch("/api/solicitudes");
+
+                if (!respuesta.ok) {
+                    throw new Error("No se pudieron obtener las solicitudes");
+                }
+
+                const solicitudes = await respuesta.json();
+
+                if (solicitudes.length === 0) {
+
+                    tabla.innerHTML = `
+                        <tr>
+                            <td colspan="8" class="sin-solicitudes">
+                                No hay solicitudes registradas.
+                            </td>
+                        </tr>
+                    `;
+
+                    return;
+                }
+
+                tabla.innerHTML = solicitudes.map(solicitud => `
+
+                    <tr>
+
+                        <td>
+                            ${solicitud.id_solicitud}
+                        </td>
+
+                        <td>
+                            ${solicitud.nombre_cliente}
+                        </td>
+
+                        <td>
+                            ${solicitud.telefono}
+                        </td>
+
+                        <td>
+                            ${solicitud.producto}
+                        </td>
+
+                        <td>
+                            ${solicitud.cantidad}
+                        </td>
+
+                        <td>
+                            ${solicitud.fecha_evento || "No especificada"}
+                        </td>
+
+                        <td>
+                            ${solicitud.personalizacion}
+                        </td>
+
+                        <td>
+                            <span class="estado">
+                                ${solicitud.estado}
+                            </span>
+                        </td>
+
+                    </tr>
+
+                `).join("");
+
+            } catch (error) {
+
+                console.error(
+                    "Error al cargar solicitudes:",
+                    error
+                );
+
+                tabla.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="sin-solicitudes">
+                            No se pudieron cargar las solicitudes.
+                        </td>
+                    </tr>
+                `;
+            }
+        }
+
+        cargarSolicitudes();
+
+    </script>
+
+</body>
+
+</html>

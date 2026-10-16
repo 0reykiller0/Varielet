@@ -257,7 +257,7 @@ Quisiera recibir información sobre la cotización.`;
         });
 
     }
-   
+
     // =====================================================
     // CATÁLOGO
     // =====================================================
@@ -394,12 +394,9 @@ if (grupo.querySelector(".filter-title").textContent.includes("Ocas")) {
 });
 
 
-
-
-
 async function cargarProductosDesdeAPI() {
     try {
-        const respuesta = await fetch("http://localhost:3000/api/productos");
+        const respuesta = await fetch("/api/productos");
 
         if (!respuesta.ok) {
             throw new Error("No se pudieron obtener los productos");
@@ -408,6 +405,9 @@ async function cargarProductosDesdeAPI() {
         const productosBD = await respuesta.json();
 
         console.log("Productos obtenidos desde MySQL:", productosBD);
+
+        // Guardamos los productos obtenidos desde la base de datos
+        window.productosBD = productosBD;
 
         return productosBD;
 
@@ -418,3 +418,82 @@ async function cargarProductosDesdeAPI() {
 }
 
 cargarProductosDesdeAPI();
+
+
+
+// =====================================================
+// FORMULARIO DE COTIZACIÓN
+// =====================================================
+
+const quoteForm = document.querySelector("#quoteForm");
+
+if (quoteForm) {
+
+    quoteForm.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+        const nombre = document.querySelector("#clientName").value.trim();
+        const correo = document.querySelector("#clientEmail").value.trim();
+        const telefono = document.querySelector("#clientPhone").value.trim();
+        const producto = document.querySelector("#quoteProduct").value;
+        const cantidad = document.querySelector("#quoteQuantity").value;
+        const fecha = document.querySelector("#quoteDate").value;
+        const personalizacion = document.querySelector("#quoteCustomization").value.trim();
+        const mensaje = document.querySelector("#quoteMessage").value.trim();
+
+        const datos = {
+            nombre_cliente: nombre,
+            correo: correo,
+            telefono: telefono,
+            producto: producto,
+            cantidad: cantidad,
+            fecha_evento: fecha || null,
+            personalizacion: personalizacion,
+            mensaje: mensaje || null
+        };
+
+        console.log("Enviando solicitud:", datos);
+
+        try {
+
+            const respuesta = await fetch("/api/solicitudes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(datos)
+            });
+
+            const resultado = await respuesta.json();
+
+            if (!respuesta.ok) {
+                throw new Error(
+                    resultado.error || "No se pudo registrar la solicitud"
+                );
+            }
+
+            alert(
+                "¡Solicitud enviada correctamente!\n\n" +
+                "Número de solicitud: " +
+                resultado.id_solicitud
+            );
+
+            quoteForm.reset();
+
+        } catch (error) {
+
+            console.error(
+                "Error al enviar la solicitud:",
+                error
+            );
+
+            alert(
+                "No se pudo enviar la solicitud.\n" +
+                "Verifica que el servidor esté funcionando."
+            );
+        }
+
+    });
+
+}

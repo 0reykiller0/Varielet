@@ -2031,3 +2031,56 @@ h3 {
     }
 
 }
+
+
+
+/* Acciones de la página de producto */
+.product-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    width: 100%;
+}
+
+.product-actions .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+/* Botón para solicitar cotización en producto */
+.product-actions .btn-quote {
+    background-color: #553A32;
+    color: #FFFFFF;
+    border: 1px solid #553A32;
+}
+
+.product-actions .btn-quote:hover {
+    background-color: #3F2A24;
+    transform: translateY(-2px);
+}
+
+/* Botón de WhatsApp */
+.product-actions .btn-whatsapp {
+    background-color: #FFF0EB;
+    color: #553A32;
+    border: 1px solid #F7D7CC;
+}
+
+.product-actions .btn-whatsapp:hover {
+    background-color: #F7D7CC;
+    transform: translateY(-2px);
+}
